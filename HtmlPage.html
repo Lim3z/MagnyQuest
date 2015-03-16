@@ -7,6 +7,8 @@
 <body>
     <div id="container">
 
+    <p id="lose_text"></p>
+
     </div> <!-----container end tag----->
     <script>
         $(document).ready(function () {
@@ -78,16 +80,25 @@
                 $('#container').append("<button id=\"battle_btn\">BATTLE</button>");
             });
 
-            // monster variables
-
             // monsters
 
-            var monster_name = new Array(
-                  "monster1",
-                  "monster2",
-                  "monster3",
-                  "monster4");
-        });
+            var monster_list = new Array(
+                { "navn": "monster1", "hp": 1, "str": 10 },
+                { "navn": "monster2", "hp": 1, "str": 10 },
+                { "navn": "monster3", "hp": 1, "str": 10 }
+                )
+
+            for ($i = 0; $i <= 0; $i++) {
+                var $antal = Math.floor(Math.random() * monster_list.length);
+                var monster_navn = monster_list[$antal]['navn'];
+                var monster_hp = monster_list[$antal]['hp'];
+                var monster_str = monster_list[$antal]['str'];
+            }
+
+            console.log(monster_navn);
+
+
+            });
     </script>
 </body>
 </html>
