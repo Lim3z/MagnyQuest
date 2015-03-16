@@ -1,20 +1,92 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <link href="StyleSheet.css" rel="stylesheet" />
+    <title>MagnyQuest</title>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script></head>
 <body>
+    <div id="container">
 
+    </div> <!-----container end tag----->
     <script>
         $(document).ready(function () {
+            // start_btn
+            $('#container').append("<button id=\"start_btn\">Start</button>");
+            $('#container').append("<button id=\"controls_btn\">Controls</button>");
 
             // player_variables
-            var player_hp = 40;
-            var player_name = bo;
-            var player_str = 2;
-            var player_lvl = 1;
+
+            // names
+            var player_name = "";
+
+            // Levels
+            var player_lvl = 3;
+
+            // player img
+            var player_img = "1.jpg";
+
+            // player hp
+            var player_base_hp = 40;
+            var player_lvl_hp = 40;
+            var player_hp = player_base_hp + (player_lvl_hp * player_lvl);
+
+            // player stats
+            var player_base_str = 2;
+            var player_lvl_str = 2;
+            var player_str = player_base_str + (player_lvl_str * player_lvl);
+
+            // start_btn
+            $('#start_btn').click(function () {
+                if (player_name != "") {
+
+                    // asign player_variables
+                    $('#container').append("<img src=\"images/" + player_img + "\" />");
+                    $('#container').append("<p id=\"player_name\">Your name is " + player_name + "</p>");
+                    $('#container').append("<p id=\"player_hp\"> Health: " + player_hp + "</p>");
+                    $('#container').append("<p id=\"player_str\">Strength: " + player_str + "</p>");
+                    $('#container').append("<p id=\"player_lvl\">Level: " + player_lvl + "</p>");
+                    $('#container').append("<button id=\"battle_btn\">BATTLE</button>");
 
 
+                    $('#start_btn').remove();
+                    $('#controls_btn').remove();
+
+                }
+                else
+                {
+                    $('#container').append("<input type=\"text\" id=\"name_textbox\" />");
+                    $('#container').append("<button id=\"choose_name\">Choose Name</button>");
+
+                    $('#start_btn').remove();
+                    $('#controls_btn').remove();
+                }
+            });
+
+            // vælg navn
+            $(document).on("click", '#choose_name', function() {
+                player_name = $('#name_textbox').val()
+
+                $('#choose_name').remove();
+                $('#name_textbox').remove();
+
+                // asign player_variables
+                $('#container').append("<img src=\"images/" + player_img + "\" />");
+                $('#container').append("<p id=\"player_name\">Your name is " + player_name + "</p>");
+                $('#container').append("<p id=\"player_hp\"> Health: " + player_hp + "</p>");
+                $('#container').append("<p id=\"player_str\">Strength: " + player_str + "</p>");
+                $('#container').append("<p id=\"player_lvl\">Level: " + player_lvl + "</p>");
+                $('#container').append("<button id=\"battle_btn\">BATTLE</button>");
+            });
+
+            // monster variables
+
+            // monsters
+
+            var monster_name = new Array(
+                  "monster1",
+                  "monster2",
+                  "monster3",
+                  "monster4");
         });
     </script>
 </body>
