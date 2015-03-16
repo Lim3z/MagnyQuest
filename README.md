@@ -1,0 +1,2 @@
+# MagnyQuest
+jquery game
