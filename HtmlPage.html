@@ -19,7 +19,7 @@
             // player_variables
 
             // names
-            var player_name = "";
+            var player_name = "test";
 
             // Levels
             var player_lvl = 3;
@@ -41,14 +41,19 @@
             $('#start_btn').click(function () {
                 if (player_name != "") {
 
-                    // asign player_variables
-                    $('#container').append("<img src=\"images/" + player_img + "\" />");
-                    $('#container').append("<p id=\"player_name\">Your name is " + player_name + "</p>");
-                    $('#container').append("<p id=\"player_hp\"> Health: " + player_hp + "</p>");
-                    $('#container').append("<p id=\"player_str\">Strength: " + player_str + "</p>");
-                    $('#container').append("<p id=\"player_lvl\">Level: " + player_lvl + "</p>");
-                    $('#container').append("<button id=\"battle_btn\">BATTLE</button>");
+                    $('#container').append("<div id=\"upper_frame\"></div>");
+                    $('#container').append("<div id=\"middle_frame\"></div>");
+                    $('#middle_frame').append("<button id=\"battle_btn\">BATTLE</button>");
+                    $('#container').append("<div id=\"under_frame\"></div>");
 
+                    // asign player_variables
+                    $('#under_frame').append("<img id=\"player_img\" src=\"images/" + player_img + "\" />");
+                    $('#under_frame').append("<div id=\"player_frame\"></div>");
+
+                    $('#player_frame').append("<p id=\"player_name\">" + player_name + "</p>");
+                    $('#player_frame').append("<p id=\"player_hp\"> Health: " + player_hp + "</p>");
+                    $('#player_frame').append("<p id=\"player_str\">Strength: " + player_str + "</p>");
+                    $('#player_frame').append("<p id=\"player_lvl\">Level: " + player_lvl + "</p>");
 
                     $('#start_btn').remove();
                     $('#controls_btn').remove();
@@ -80,24 +85,33 @@
                 $('#container').append("<button id=\"battle_btn\">BATTLE</button>");
             });
 
-            // monsters
 
-            var monster_list = new Array(
-                { "navn": "monster1", "hp": 1, "str": 10 },
-                { "navn": "monster2", "hp": 1, "str": 10 },
-                { "navn": "monster3", "hp": 1, "str": 10 }
-                )
+            // battle button
+            $(document).on("click", '#battle_btn', function () {
+                // monsters
+                var monster_list = new Array(
+                    { "navn": "monster1", "hp": 1, "str": 10, "img": "1.jpg", "lvl": 1 },
+                    { "navn": "monster2", "hp": 2, "str": 20, "img": "1.jpg", "lvl": 2 },
+                    { "navn": "monster3", "hp": 3, "str": 30, "img": "1.jpg", "lvl": 3 }
+                    )
 
-            for ($i = 0; $i <= 0; $i++) {
-                var $antal = Math.floor(Math.random() * monster_list.length);
-                var monster_navn = monster_list[$antal]['navn'];
-                var monster_hp = monster_list[$antal]['hp'];
-                var monster_str = monster_list[$antal]['str'];
-            }
+                for ($i = 0; $i <= 0; $i++) {
+                    var rando = Math.floor(Math.random() * monster_list.length);
+                    var monster_navn = monster_list[rando]['navn'];
+                    var monster_hp = monster_list[rando]['hp'];
+                    var monster_str = monster_list[rando]['str'];
+                    var monster_img = monster_list[rando]['img'];
+                    var monster_lvl = monster_list[rando]['lvl'];
+                }
 
-            console.log(monster_navn);
+                $('#battle_btn').remove();
 
-
+                $('#container').append("<img id=\"monster_img\" src=\"images/"+ monster_img +"\" />");
+                $('#container').append("<p id=\"monster_name\">Name: " + monster_navn + "</p>");
+                $('#container').append("<p id=\"monster_hp\">Health: " + monster_hp + "</p>");
+                $('#container').append("<p id=\"monster_str\">Strength: " + monster_str + "</p>");
+                $('#container').append("<p id=\"monster_lvl\">Level: " + monster_lvl + "</p>");
+                });
             });
     </script>
 </body>

@@ -1,3 +1,123 @@
 ﻿body {
     background-image:url(images/grey_wash_wall.png);
 }
+
+#container {
+    width: 1000px;
+    height: 600px;
+    background-color: #f00;
+    margin: auto;
+}
+
+/*start*/
+
+#start_btn, #controls_btn {
+    width: 250px;
+    height: 60px;
+    float: left;
+    clear: both;
+    margin: 38px 0 0 380px;
+    font-size: 30px;
+    border-color: #000;
+    border: solid 1px;
+    font-family: SimSun;
+    color: #111;
+}
+
+#start_btn {
+    background-color: #0026ff;
+}
+
+#controls_btn {
+    background-color: #00ff21;
+}
+
+#start_btn:hover, #controls_btn:hover {
+    opacity: 0.85;
+}
+
+/*Choose name*/
+
+#choose_name {
+    width: 250px;
+    height: 60px;
+    float: left;
+    clear: both;
+    margin: 5px 0 0 380px;
+    font-size: 30px;
+    border-color: #000;
+    border: solid 1px;
+    font-family: SimSun;
+    color: #111;
+}
+
+#name_textbox {
+    width: 250px;
+    height: 40px;
+    float: left;
+    clear: both;
+    margin: 38px 0 0 380px;
+    font-size: 30px;
+    border-color: #000;
+    border: solid 1px;
+    font-family: SimSun;
+    color: #111;
+}
+
+/*player*/
+
+#player_frame {
+    width: 230px;
+    height: 130px;
+    float: left;
+    clear: both;
+    background-color: #00ff21;
+    margin: -130px 0 0 130px;
+    border-radius: 10px;
+}
+
+#player_img {
+    height: 130px;
+    width: 130px;
+    float: left;
+    margin: 0px 0 0 0;
+}
+
+#player_name, #player_hp, #player_str, #player_lvl, #battle_btn {
+    float: left;
+    clear: both;
+    margin: 0px 0 0 0;
+    font-family: SimSun;
+}
+
+#upper_frame {
+    width: 1000px;
+    height: 80px;
+    float: left;
+    background-color: #292929;
+}
+
+#middle_frame {
+    width: 1000px;
+    height: 390px;
+    float: left;
+    background-color: #b6ff00;
+}
+
+#under_frame {
+    height: 130px;
+    width: 1000px;
+    background-color: #0026ff;
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
