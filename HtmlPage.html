@@ -18,13 +18,15 @@
 <script>
         $(document).ready(function () {
             // start_btn
-            $('.container').append("<button id=\"start_btn\">Start</button>");
-            $('.container').append("<button id=\"controls_btn\">Controls</button>");
+            $('.container').append("<div class=\"row\">");
+            $('.container').append("<button class=\"btn btn-primary btn-large col-lg-4 col-lg-offset-4\" id=\"start_btn\">Start</button>");
+            $('.container').append("<button class=\"btn btn-info btn-large col-lg-4 col-lg-offset-4\" id=\"controls_btn\">Controls</button>");
+            $('.container').append("</div>");
 
             // player_variables
 
             // names
-            var player_name = "testnavn";
+            var player_name = "";
 
             // Levels
             var player_lvl = 3;
@@ -67,8 +69,8 @@
                 }
                 else
                 {
-                    $('.container').append("<input type=\"text\" id=\"name_textbox\" />");
-                    $('.container').append("<button id=\"choose_name\">Choose Name</button>");
+                    $('.container').append("<input class=\"col-lg-4 col-lg-offset-4\" type=\"text\" id=\"name_textbox\"/>");
+                    $('.container').append("<button class=\"btn btn-primary col-lg-4 col-lg-offset-4\" id=\"choose_name\">Choose Name</button>");
 
                     $('#start_btn').remove();
                     $('#controls_btn').remove();
@@ -77,13 +79,16 @@
 
             // vælg navn
             $(document).on("click", '#choose_name', function() {
-                player_name = $('#name_textbox').val()
-
+                player_name = $('#name_textbox').val();
+				if(player_name === ''){
+				$('.container').append("<p class=\"col-lg-4 col-lg-offset-4\">You didn't input your name!</p>");
+				}
+				else{
                 $('#choose_name').remove();
                 $('#name_textbox').remove();
-
+				}
                 // asign player_variables
-
+				if(player_name !== ''){
                     $('.container').append("<div class=\"row\" id=\"upper_frame\"></div>");
                     $('.container').append("<div class=\"row\" id=\"middle_frame\"></div>");
                     $('#middle_frame').append("<button id=\"battle_btn\">BATTLE</button>");
@@ -98,7 +103,9 @@
                     $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_hp\"> Health: " + player_hp + "</p>");
                     $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_str\">Strength: " + player_str + "</p>");
                     $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_lvl\">Level: " + player_lvl + "</p>");
-            });
+				};
+			});
+			
 
 
             // battle button
