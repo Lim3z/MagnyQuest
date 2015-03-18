@@ -50,7 +50,7 @@
 
                     $('.container').append("<div class=\"row\" id=\"upper_frame\"></div>");
                     $('.container').append("<div class=\"row\" id=\"middle_frame\"></div>");
-                    $('#middle_frame').append("<button id=\"battle_btn\">BATTLE</button>");
+                    $('#middle_frame').append("<button class=\"btn btn-default col-lg-4 col-lg-offset-4\" id=\"battle_btn\">BATTLE</button>");
                     $('.container').append("<div class=\"row\" id=\"under_frame\"></div>");
 
                     // asign player_variables
@@ -81,7 +81,13 @@
             $(document).on("click", '#choose_name', function() {
                 player_name = $('#name_textbox').val();
 				if(player_name === ''){
-				$('.container').append("<p class=\"col-lg-4 col-lg-offset-4\">You didn't input your name!</p>");
+				if(document.getElementById("noname") === null)
+					{
+					$('.container').append("<h3 class=\"col-lg-4 col-lg-offset-4 well\" id=\"noname\">You didn't input your name!</h3>");
+					setTimeout(function() {
+						$("#noname").remove();
+					}, 1500);
+					}
 				}
 				else{
                 $('#choose_name').remove();
@@ -91,7 +97,7 @@
 				if(player_name !== ''){
                     $('.container').append("<div class=\"row\" id=\"upper_frame\"></div>");
                     $('.container').append("<div class=\"row\" id=\"middle_frame\"></div>");
-                    $('#middle_frame').append("<button id=\"battle_btn\">BATTLE</button>");
+                    $('#middle_frame').append("<button class=\"btn btn-default col-lg-4 col-lg-offset-4\" id=\"battle_btn\">BATTLE</button>");
                     $('.container').append("<div class=\"row\" id=\"under_frame\"></div>");
 
                     // asign player_variables
