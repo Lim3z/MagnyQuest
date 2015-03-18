@@ -1,25 +1,30 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <link href="StyleSheet.css" rel="stylesheet" />
-    <title>MagnyQuest</title>
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script></head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link href="css/StyleSheet.css" rel="stylesheet" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<title>MagnyQuest</title>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
+</head>
 <body>
-    <div id="container">
-
-    <p id="lose_text"></p>
-
-    </div> <!-----container end tag----->
-    <script>
+<div class="container">
+  <p id="lose_text"></p>
+</div>
+<!-----container end tag-----> 
+<script>
         $(document).ready(function () {
             // start_btn
-            $('#container').append("<button id=\"start_btn\">Start</button>");
-            $('#container').append("<button id=\"controls_btn\">Controls</button>");
+            $('.container').append("<button id=\"start_btn\">Start</button>");
+            $('.container').append("<button id=\"controls_btn\">Controls</button>");
 
             // player_variables
 
             // names
-            var player_name = "test";
+            var player_name = "testnavn";
 
             // Levels
             var player_lvl = 3;
@@ -41,19 +46,20 @@
             $('#start_btn').click(function () {
                 if (player_name != "") {
 
-                    $('#container').append("<div id=\"upper_frame\"></div>");
-                    $('#container').append("<div id=\"middle_frame\"></div>");
+                    $('.container').append("<div class=\"row\" id=\"upper_frame\"></div>");
+                    $('.container').append("<div class=\"row\" id=\"middle_frame\"></div>");
                     $('#middle_frame').append("<button id=\"battle_btn\">BATTLE</button>");
-                    $('#container').append("<div id=\"under_frame\"></div>");
+                    $('.container').append("<div class=\"row\" id=\"under_frame\"></div>");
 
                     // asign player_variables
-                    $('#under_frame').append("<img id=\"player_img\" src=\"images/" + player_img + "\" />");
-                    $('#under_frame').append("<div id=\"player_frame\"></div>");
-
-                    $('#player_frame').append("<p id=\"player_name\">" + player_name + "</p>");
-                    $('#player_frame').append("<p id=\"player_hp\"> Health: " + player_hp + "</p>");
-                    $('#player_frame').append("<p id=\"player_str\">Strength: " + player_str + "</p>");
-                    $('#player_frame').append("<p id=\"player_lvl\">Level: " + player_lvl + "</p>");
+                    $('#under_frame').append("<div class=\"col-lg-4 col-sm-4 col-xs-12\" id=\"player_frame\"></div>");
+                    $('#player_frame').append("<div class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_img_wrapper\">");
+                    $('#player_img_wrapper').append("<img class=\"img-responsive img-rounded\" id=\"player_img\" src=\"images/" + player_img + "\" />");
+                    $('#player_frame').append("</div>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_name\">" + player_name + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_hp\"> Health: " + player_hp + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_str\">Strength: " + player_str + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_lvl\">Level: " + player_lvl + "</p>");
 
                     $('#start_btn').remove();
                     $('#controls_btn').remove();
@@ -61,8 +67,8 @@
                 }
                 else
                 {
-                    $('#container').append("<input type=\"text\" id=\"name_textbox\" />");
-                    $('#container').append("<button id=\"choose_name\">Choose Name</button>");
+                    $('.container').append("<input type=\"text\" id=\"name_textbox\" />");
+                    $('.container').append("<button id=\"choose_name\">Choose Name</button>");
 
                     $('#start_btn').remove();
                     $('#controls_btn').remove();
@@ -77,12 +83,21 @@
                 $('#name_textbox').remove();
 
                 // asign player_variables
-                $('#container').append("<img src=\"images/" + player_img + "\" />");
-                $('#container').append("<p id=\"player_name\">Your name is " + player_name + "</p>");
-                $('#container').append("<p id=\"player_hp\"> Health: " + player_hp + "</p>");
-                $('#container').append("<p id=\"player_str\">Strength: " + player_str + "</p>");
-                $('#container').append("<p id=\"player_lvl\">Level: " + player_lvl + "</p>");
-                $('#container').append("<button id=\"battle_btn\">BATTLE</button>");
+
+                    $('.container').append("<div class=\"row\" id=\"upper_frame\"></div>");
+                    $('.container').append("<div class=\"row\" id=\"middle_frame\"></div>");
+                    $('#middle_frame').append("<button id=\"battle_btn\">BATTLE</button>");
+                    $('.container').append("<div class=\"row\" id=\"under_frame\"></div>");
+
+                    // asign player_variables
+                    $('#under_frame').append("<div class=\"col-lg-4 col-sm-4 col-xs-12\" id=\"player_frame\"></div>");
+                    $('#player_frame').append("<div class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_img_wrapper\">");
+                    $('#player_img_wrapper').append("<img class=\"img-responsive img-rounded\" id=\"player_img\" src=\"images/" + player_img + "\" />");
+                    $('#player_frame').append("</div>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_name\">" + player_name + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_hp\"> Health: " + player_hp + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_str\">Strength: " + player_str + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_lvl\">Level: " + player_lvl + "</p>");
             });
 
 
@@ -96,21 +111,24 @@
                     )
 
                 for ($i = 0; $i <= 0; $i++) {
-                    var rando = Math.floor(Math.random() * monster_list.length);
-                    var monster_navn = monster_list[rando]['navn'];
-                    var monster_hp = monster_list[rando]['hp'];
-                    var monster_str = monster_list[rando]['str'];
-                    var monster_img = monster_list[rando]['img'];
-                    var monster_lvl = monster_list[rando]['lvl'];
+                    var rand = Math.floor(Math.random() * monster_list.length);
+                    var monster_navn = monster_list[rand]['navn'];
+                    var monster_hp = monster_list[rand]['hp'];
+                    var monster_str = monster_list[rand]['str'];
+                    var monster_img = monster_list[rand]['img'];
+                    var monster_lvl = monster_list[rand]['lvl'];
                 }
 
                 $('#battle_btn').remove();
 
-                $('#container').append("<img id=\"monster_img\" src=\"images/"+ monster_img +"\" />");
-                $('#container').append("<p id=\"monster_name\">Name: " + monster_navn + "</p>");
-                $('#container').append("<p id=\"monster_hp\">Health: " + monster_hp + "</p>");
-                $('#container').append("<p id=\"monster_str\">Strength: " + monster_str + "</p>");
-                $('#container').append("<p id=\"monster_lvl\">Level: " + monster_lvl + "</p>");
+                $('#under_frame').append("<div class=\"col-lg-4 col-sm-4 col-xs-12 pull-right\" id=\"monster_frame\"></div>");
+                $('#monster_frame').append("<div class=\"col-lg-6 col-sm-6 col-xs-6 pull-right\" id=\"monster_img_wrapper\">");
+                $('#monster_img_wrapper').append("<img class=\"img-responsive img-rounded\" id=\"monster_img\" src=\"images/"+ monster_img +"\" />");
+                $('#monster_frame').append("</div>");
+                $('#monster_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"monster_name\">Name: " + monster_navn + "</p>");
+                $('#monster_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"monster_hp\">Health: " + monster_hp + "</p>");
+                $('#monster_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"monster_str\">Strength: " + monster_str + "</p>");
+                $('#monster_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"monster_lvl\">Level: " + monster_lvl + "</p>");
                 });
             });
     </script>
