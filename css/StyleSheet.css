@@ -46,6 +46,11 @@
 	float: left;
 	margin: 0px 0 0 0;
 }
+#player_name, #player_hp, #player_lvl, #player_str, #player_exp, #player_exp_needed {
+	margin: 0 0 0 0;
+	font-family: SimSun;
+	text-shadow: 0 0 5px rgba(255,255,255,1);
+}
 #battle_btn {
 	float: left;
 	clear: both;
@@ -63,22 +68,31 @@
 	height: 130px;
 	background-color: #0026ff;
 }
+#battletextinfo {
+	background-color: rgba(189, 195, 199,1.0);
+	max-height: 150px;
+	overflow: auto;
+}
 .container {
-background-color:#34495e;
-min-height:768px;	
+	background-color: #34495e;
+	min-height: 768px;
+}
+#controls_info {
+	background-color: rgba(189, 195, 199,1.0);
 }
 /* enemy */
 
 #monster_frame {
 	height: 130px;
-	background-color: #FF0000;
+	background-color: #E04F4F;
 	border-radius: 10px;
 }
 #monster_img {
 	height: 130px;
 	margin: 0 0 0 0;
 }
-#monster_name, #monster_hp, #monster_lvl, #monster_str {
-	margin: 0px 0 0 0;
+#monster_name, #monster_hp, #monster_lvl, #monster_str, #monster_exp {
+	margin: 0 0 0 0;
 	font-family: SimSun;
+	text-shadow: 0 0 5px rgba(255,255,255,1);
 }

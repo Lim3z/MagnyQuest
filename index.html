@@ -10,7 +10,7 @@
 <title>MagnyQuest</title>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
 </head>
-<body>
+<body ondragstart="return false" onselectstart="return false">
 <div class="container">
   <p id="lose_text"></p>
 </div>
@@ -26,7 +26,7 @@
             // player_variables
 
             // names
-            var player_name = "";
+            var player_name = "jkl";
 
             // Levels
             var player_lvl = 3;
@@ -43,6 +43,36 @@
             var player_base_str = 2;
             var player_lvl_str = 2;
             var player_str = player_base_str + (player_lvl_str * player_lvl);
+			
+			//player exp
+			var player_exp = 0;
+			
+			//player exp needed for level up
+			var player_base_exp = 100;
+			var player_exp_needed = player_base_exp * (player_lvl * 1.5);
+
+
+			//controls_btn
+            $('#controls_btn').click(function () {
+                    $('.container').append("<div class=\"row\" id=\"controls_info\"></div>");
+					$('#controls_info').append("<div class=\"col-lg-8 col-sm-12 col-xs-12 col-lg-offset-2\" id=\"controls_text\"></div>");
+					$('#controls_text').append("<h1 class=\"text-center\">Welcome to MagnyQuest!</h1>");
+					$('#controls_text').append("<p>Here in MagnyQuest, you can do a variety of things, like:</p>");
+					$('#controls_text').append("<ul>");
+					$('#controls_text').append("<li>Kill Things!</li>");
+					$('#controls_text').append("<li>Gain exp!</li>");
+					$('#controls_text').append("<li>Level up!</li>");
+					$('#controls_text').append("<li>Kill more things!</li>");
+					$('#controls_text').append("<li>Name yourself!</li>");
+					$('#controls_text').append("<li>Other things which haven't been made yet! <span class=\"well well-sm\">*GASP*</span</li>");
+					$('#controls_info').append("</ul>");
+					$('#controls_text').append("<p>Not convinced to try it yet?</p>");
+					$('#controls_text').append("<p>Just listen to all of our player(s - eventually) who loved MagnyQuest!:</p>");
+					$('#controls_text').append("<p>Not convinced to try it yet?</p>");
+
+                    $('#start_btn').remove();
+                    $('#controls_btn').remove();
+			});
 
             // start_btn
             $('#start_btn').click(function () {
@@ -58,16 +88,19 @@
                     $('#player_frame').append("<div class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_img_wrapper\">");
                     $('#player_img_wrapper').append("<img class=\"img-responsive img-rounded\" id=\"player_img\" src=\"images/" + player_img + "\" />");
                     $('#player_frame').append("</div>");
-                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_name\">" + player_name + "</p>");
-                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_hp\"> Health: " + player_hp + "</p>");
-                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_str\">Strength: " + player_str + "</p>");
-                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_lvl\">Level: " + player_lvl + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_name\">" + player_name + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_hp\"> Health: " + player_hp + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_str\">Strength: " + player_str + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_lvl\">Level: " + player_lvl + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_exp\">Current exp: " + player_exp + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_exp_needed\">Exp needed: " + player_exp_needed + "</p>");
+
 
                     $('#start_btn').remove();
                     $('#controls_btn').remove();
 
                 }
-                else
+				else
                 {
                     $('.container').append("<input class=\"col-lg-4 col-lg-offset-4\" type=\"text\" id=\"name_textbox\"/>");
                     $('.container').append("<button class=\"btn btn-primary col-lg-4 col-lg-offset-4\" id=\"choose_name\">Choose Name</button>");
@@ -76,7 +109,6 @@
                     $('#controls_btn').remove();
                 }
             });
-
             // vælg navn
             $(document).on("click", '#choose_name', function() {
                 player_name = $('#name_textbox').val();
@@ -93,6 +125,12 @@
                 $('#choose_name').remove();
                 $('#name_textbox').remove();
 				}
+
+			//controls_btn
+            $('#controls_btn').click(function () {
+			});
+
+								
                 // asign player_variables
 				if(player_name !== ''){
                     $('.container').append("<div class=\"row\" id=\"upper_frame\"></div>");
@@ -105,10 +143,12 @@
                     $('#player_frame').append("<div class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_img_wrapper\">");
                     $('#player_img_wrapper').append("<img class=\"img-responsive img-rounded\" id=\"player_img\" src=\"images/" + player_img + "\" />");
                     $('#player_frame').append("</div>");
-                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_name\">" + player_name + "</p>");
-                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_hp\"> Health: " + player_hp + "</p>");
-                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_str\">Strength: " + player_str + "</p>");
-                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"player_lvl\">Level: " + player_lvl + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_name\">" + player_name + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_hp\"> Health: " + player_hp + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_str\">Strength: " + player_str + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_lvl\">Level: " + player_lvl + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_exp\">Current exp: " + player_exp + "</p>");
+                    $('#player_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6 0mg\" id=\"player_exp_needed\">Exp needed: " + player_exp_needed + "</p>");
 				};
 			});
 			
@@ -118,30 +158,80 @@
             $(document).on("click", '#battle_btn', function () {
                 // monsters
                 var monster_list = new Array(
-                    { "navn": "monster1", "hp": 1, "str": 10, "img": "1.jpg", "lvl": 1 },
-                    { "navn": "monster2", "hp": 2, "str": 20, "img": "1.jpg", "lvl": 2 },
-                    { "navn": "monster3", "hp": 3, "str": 30, "img": "1.jpg", "lvl": 3 }
+                    { "name": "monster1", "hp": 20, "str": 10, "img": "1.jpg", "lvl": 1, "exp": 8 },
+                    { "name": "monster2", "hp": 40, "str": 20, "img": "1.jpg", "lvl": 2, "exp": 16 },
+                    { "name": "monster3", "hp": 60, "str": 30, "img": "1.jpg", "lvl": 3, "exp": 24 },
+                    { "name": "monster4", "hp": 80, "str": 40, "img": "1.jpg", "lvl": 4, "exp": 32 },
+                    { "name": "monster5", "hp": 100, "str": 50, "img": "1.jpg", "lvl": 5, "exp": 40 }
                     )
 
                 for ($i = 0; $i <= 0; $i++) {
                     var rand = Math.floor(Math.random() * monster_list.length);
-                    var monster_navn = monster_list[rand]['navn'];
+                    var monster_name = monster_list[rand]['name'];
                     var monster_hp = monster_list[rand]['hp'];
                     var monster_str = monster_list[rand]['str'];
                     var monster_img = monster_list[rand]['img'];
                     var monster_lvl = monster_list[rand]['lvl'];
+                    var monster_exp = monster_list[rand]['exp'];
+					var monster_cur_hp = monster_list[rand]['hp'];
                 }
 
                 $('#battle_btn').remove();
+				
+				$('#under_frame').append("<button class=\"col-lg-2 col-sm-2 col-xs-12 col-lg-offset-1 col-sm-offset-1 btn btn-default\" id=\"attack_btn\">Attack</button>");
 
+				
                 $('#under_frame').append("<div class=\"col-lg-4 col-sm-4 col-xs-12 pull-right\" id=\"monster_frame\"></div>");
                 $('#monster_frame').append("<div class=\"col-lg-6 col-sm-6 col-xs-6 pull-right\" id=\"monster_img_wrapper\">");
                 $('#monster_img_wrapper').append("<img class=\"img-responsive img-rounded\" id=\"monster_img\" src=\"images/"+ monster_img +"\" />");
                 $('#monster_frame').append("</div>");
-                $('#monster_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"monster_name\">Name: " + monster_navn + "</p>");
+                $('#monster_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"monster_name\">Name: " + monster_name + "</p>");
                 $('#monster_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"monster_hp\">Health: " + monster_hp + "</p>");
                 $('#monster_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"monster_str\">Strength: " + monster_str + "</p>");
                 $('#monster_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"monster_lvl\">Level: " + monster_lvl + "</p>");
+                $('#monster_frame').append("<p class=\"col-lg-6 col-sm-6 col-xs-6\" id=\"monster_exp\">exp drop: " + monster_exp + "</p>");
+				$(document).on("click", '#attack_btn', function () {
+					if(document.getElementById("battletextinfo") === null){
+					$('.container').append("<div class=\"row\" id=\"battletextinfo\"></div>");
+					}
+					monster_cur_hp = monster_cur_hp - player_str;
+					if(document.getElementById("bitp") === null){
+					$('#battletextinfo').append("<p id=\"bitp\">You hit " + monster_name + " for " + player_str + " damage. it now has " + monster_cur_hp + "/" + monster_hp + "</p>");
+					}
+					else{
+					$('#bitp').replaceWith("<p id=\"bitp\">You hit " + monster_name + " for " + player_str + " damage. it now has " + monster_cur_hp + "/" + monster_hp + "</p>");						
+					}
+					$('#monster_hp').html("Health: " + monster_cur_hp + "/" + monster_hp + "");
+						if(monster_cur_hp <= 0){
+						if(document.getElementById("killedmonstertext") === null){
+						$('#battletextinfo').append("<p id=\"killedmonstertext\">You killed " + monster_name + "!</p>");
+						}
+						else{
+						$('#killedmonstertext').replaceWith("<p id=\"killedmonstertext\">You killed " + monster_name + "!</p>");
+						}
+						if(document.getElementById("gotexptext") === null){
+						$('#battletextinfo').append("<p id=\"gotexptext\">You got " + monster_exp + " exp from the monster!</p>");
+						}
+						else{
+						$('#gotexptext').replaceWith("<p id=\"gotexptext\">You got " + monster_exp + " exp from the monster!</p>");
+						}
+						$('#bitp').fadeOut(250, function(){
+						  $('#bitp').remove();
+						});
+						$('#killedmonstertext').fadeOut(5000, function(){
+						  $('#killedmonstertext').remove();
+						});
+						$('#gotexptext').fadeOut(5000, function(){
+						  $('#gotexptext').remove();
+						});
+						player_exp = player_exp + monster_exp;
+						$('#player_exp').html("Current exp: " + player_exp + "");
+						$('#attack_btn').remove();
+						$('#monster_frame').remove();
+						monster_cur_hp = undefined; monster_hp = undefined; monster_name = undefined; monster_str = undefined; monster_img = undefined; monster_lvl = undefined; monster_exp = undefined;
+						$('#middle_frame').append("<button class=\"btn btn-default col-lg-4 col-lg-offset-4\" id=\"battle_btn\">BATTLE</button>");
+						}
+					});
                 });
             });
     </script>
